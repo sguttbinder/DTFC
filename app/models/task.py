@@ -8,14 +8,14 @@ class Task(db.Model):
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   title = db.Column(db.String(100), nullable=False)
   description = db.Column(db.Text, nullable=True)
-  completed = db.Column(db.Boolean, nullable=False)
+  completed = db.Column(db.Boolean,  default=False, nullable=False)
 
   def to_dict(self):
     return {
         "id": self.id,
         "projectId": self.projecctId,
         "userId": self.userId,
-        "title": self.titleId,
+        "title": self.title,
         "description": self.description,
-        "completed": self.completed,
+        "completed": self.completed
     }

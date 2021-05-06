@@ -40,11 +40,12 @@ export const login = (email, password) => async (dispatch) => {
             password
         })
     });
-    const data = await response.json();
-    if (data.errors) {
-        return data;
+    const user = await response.json();
+    if (user.errors) {
+        return user;
     }
-    dispatch(setUser(data));
+    // should name data va
+    dispatch(setUser(user));
     return {};
 }
 
@@ -78,12 +79,14 @@ export const signUp = (username, email, password) => async (dispatch)=> {
 // reducer
 
 const initialState = { user: null };
-
+// If user is not null, you are logged in
 // useSelector(state => state.session.user)
-
+// Reducer takes in state... and returns new state (which has what needs to be updated/if nothing changes the original state)
 export default function reducer(state = initialState, action) {
+    // The SWITCH is what updates the store. 
     switch (action.type) {
         case SET_USER:
+            // From login thunk... it sets the user
             return { user: action.payload };
         case REMOVE_USER:
             return { user: null };

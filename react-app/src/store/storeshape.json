@@ -1,0 +1,24 @@
+{
+  "session": {
+    "user": {}
+  },
+  "task": {},
+  "project": {
+    "projects_by_id": {
+      "4": {
+        "id": 4,
+        "title": "A random title",
+        "completed": true,
+        "userId": 3
+      },
+      "5":{
+        "id": 5,
+        "title": "A random2 title",
+        "completed": false,
+        "userId": 3
+      }
+
+    },
+    "selected_project":4
+  }
+}
