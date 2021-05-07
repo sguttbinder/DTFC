@@ -1,0 +1,9 @@
+.sidebar__container {
+  background-color: rgba(117, 117, 117, 0.774);
+  /* border: 1px solid black; */
+  /* min-width: 200px; */
+  padding: 10px;
+  padding-top: 30px;
+  width: 300px;
+  text-align: center;
+}

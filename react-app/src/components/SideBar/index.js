@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import ProjectList from '../ProjectList/';
 // import NewTaskButton from '../NewTaskButton/NewTaskButton';
 
 import './sidebar.css'
@@ -8,7 +9,8 @@ import './sidebar.css'
 const SideBar = () => {
   return (
     <div className="sidebar__container">
-      <h1> Test </h1>
+      <ProjectList />
+
     </div>
   );
 }

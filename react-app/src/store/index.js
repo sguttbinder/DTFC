@@ -1,14 +1,14 @@
 import {createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from 'redux-thunk';
 import session from './session'
-// projects
+import project from './project'
 // tasks
 
 // There is a reducer per slice of state
 // e.g. if there are 5 tables... there are usually 5 reducers.
 const rootReducer = combineReducers({
-    session
-    // projects
+    session,
+    project
     // tasks
 });
 
