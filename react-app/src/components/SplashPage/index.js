@@ -6,7 +6,6 @@ import NavBar from "../NavBar/index";
 const SplashPage = () => {
     return (
       <div className="page-container">
-        <NavBar />
         <div>
           <div>
             Splash Test
