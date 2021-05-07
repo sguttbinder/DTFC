@@ -2,7 +2,24 @@
   "session": {
     "user": {}
   },
-  "task": {},
+  "task": {
+    "tasks_by_id":{
+      "8":{
+        "id":8,
+        "title": "A task title for 1",
+        "description": "A task description that's long for 1",
+        "completed": false,
+        "userId":3
+      },
+      "9":{
+        "id":9,
+        "title": "A task title for 2",
+        "description": "A task description that's long for 2",
+        "completed": true,
+        "userId":2
+      }
+    }
+  },
   "project": {
     "projects_by_id": {
       "4": {

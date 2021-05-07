@@ -43,15 +43,15 @@ const NavBar = () => {
       <ul>
         <li>
           <NavLink to="/" exact={true} activeClassName="active">
-            Home
+            About
           </NavLink>
         </li>
         {renderSignInLogIn()}
-        <li>
+        {/* <li>
           <NavLink to="/users" exact={true} activeClassName="active">
             Users
           </NavLink>
-        </li>
+        </li> */}
         {renderLogOut()}
       </ul>
     </nav>

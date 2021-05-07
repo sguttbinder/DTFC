@@ -1,17 +1,17 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import Project, User, Task, db
-from app.forms import CreateProjectForm
+from app.forms import NewProjectButton
 # Does this exist?
 from app.api.auth_routes import validation_errors_to_error_messages
 
 # Can we go over this line?
-project_routes = Blueprint('projects', __name__, url_prefix='/api/projects')
+project_routes = Blueprint('projects', __name__)
 
 # Get Data on project
 
 
-@project_routes.route('/', methods=('GET'))
+@project_routes.route('/')
 def projects():
     projects = Project.query.all()
     # This gets put into the project array
@@ -19,7 +19,10 @@ def projects():
 
 
 @project_routes.route('/:projectId', methods=['GET'])
-# def display_project()
+def display_project():
+    project = Project.query.all()
+    # This gets put into the project array
+    return {"projects": [project.to_dict() for project in projects]}
 
 #  Change a project details - PUT
 
