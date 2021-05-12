@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
-// import './NavBar.css'
+import './NavBar.css'
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
@@ -13,7 +13,7 @@ const NavBar = () => {
     }
     return (
       <>
-        <div>
+        <div className='navbar-links'>
           <li>
             <NavLink to="/login" exact={true} activeClassName="active">
               Login

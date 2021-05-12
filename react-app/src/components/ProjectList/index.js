@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import NewProjectButton from '../NewProjectButton/NewProjectButton';
-import { get_projects } from "../../store/project";
+import { get_projects, set_selected_project } from "../../store/project";
 
 import './ProjectList.css';
 
@@ -12,11 +12,16 @@ const ProjectList = () => {
     // return state.project.projects_by_id
   });
 
-  const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(get_projects())
   }, [dispatch])
+
+  const selectProject = (projectId) => {
+    // Sends the action to the store... which causes the reducers to run... which will send it to the switch and update the store
+dispatch(set_selected_project(projectId))
+  }
   // Blank or dispatch in [] means it loads only on first render
 
   // to do
@@ -26,17 +31,27 @@ const ProjectList = () => {
     return null
   }
   
+
+  
   return (
     <div>
+      {/* State variable = reveal ... setreveal = useState with default value of false, hidden*/}
+        <button onClick="">Add Project +</button>
+      
       <h1> Projects </h1>
+      {/* new component or... just hard code the form */}
       <ul>
-        {/* Todo */}
-        {Object.values(projects).map(project => {
-          return <li>
-            {project.title}
-          </li>
-        })
-        }
+        {projects.map((project) => {
+          {
+            /* Needs a function to send data back to thunk */
+          }
+          {
+            /* onClick with an arrow function allows the data to passthrough regarding WHAT you clicked */
+          }
+          return (
+            <li onClick={() => selectProject(project.id)}>{project.title}</li>
+          );
+        })}
         {/* {projects.title} */}
         {/* {projects.title} this won't work... so we'll have to iterate through it and then build out list items*/}
         {/* Render li projects */}

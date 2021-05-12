@@ -1,0 +1,5 @@
+.navbar-links {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}

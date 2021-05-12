@@ -13,7 +13,7 @@ class Task(db.Model):
   def to_dict(self):
     return {
         "id": self.id,
-        "projectId": self.projecctId,
+        "projectId": self.projectId,
         "userId": self.userId,
         "title": self.title,
         "description": self.description,

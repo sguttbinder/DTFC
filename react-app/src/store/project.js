@@ -3,12 +3,29 @@ const initialState = {
     selected_project: null
 }
 
-const SET_PROJECTS = "projects/SET"
-const ADD_PROJECTS = "projects/ADD"
+const SET_PROJECT = "projects/SET"
+const ADD_PROJECT = "projects/ADD"
+const UPDATE_PROJECT = "projects/UPDATE"
+const SET_SELECTED_PROJECT = "projects/SELECT"
 
 const set = project => ({
-    type: SET_PROJECTS,
+    type: SET_PROJECT,
     payload: project
+})
+
+const add = (project) => ({
+  type: ADD_PROJECT,
+  payload: project,
+});
+
+const update = (project) => ({
+  type: UPDATE_PROJECT,
+  payload: project,
+});
+
+export const set_selected_project = projectId => ({
+    type: SET_SELECTED_PROJECT,
+    payload: projectId
 })
 
 export const get_projects = () => async (dispatch) => {
@@ -24,17 +41,26 @@ export const get_projects = () => async (dispatch) => {
         return projects
         
     }
-    // dispatch the SET_PROJECTS action
-    
 }
+    // dispatch the SET_PROJECTS action
+export const add_new_project = (projectId) => async (dispatch) => {
+        const response = await fetch()
+    }
+
+
+
 
 const projectReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_PROJECTS:
+        case SET_PROJECT:
             // Return a new object.. with content of all old objects (state) AND all the contrnt that is in the other object... action.payload in this case 
             // return state
             return { ...state, projects_by_id: action.payload.projects }
-        // case: add project
+        // REVIEW Are these the same thing?
+        case ADD_PROJECT:
+            return { ...state, projects_by_id: action.payload.projects};
+        case SET_SELECTED_PROJECT:
+            return { ...state, selected_project: action.payload }
         default:
             return state
     }
