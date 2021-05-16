@@ -14,16 +14,16 @@ const NavBar = () => {
     return (
       <>
         <div className='navbar-links'>
-          <li>
+          <div>
             <NavLink to="/login" exact={true} activeClassName="active">
               Login
             </NavLink>
-          </li>
-          <li>
+          </div>
+          <div>
             <NavLink to="/sign-up" exact={true} activeClassName="active">
               Sign Up
             </NavLink>
-          </li>
+          </div>
         </div>
       </>
     );
@@ -34,21 +34,20 @@ const NavBar = () => {
     }
     return (
       <>
-        <li>
+        <div>
           <LogoutButton />
-        </li>
+        </div>
       </>
     );
   };
 
   return (
     <nav classname="navBar">
-      <ul>
-        <li>
+        <div>
           <NavLink to="/" exact={true} activeClassName="active">
             About
           </NavLink>
-        </li>
+        </div>
         {renderSignInLogIn()}
         {/* <li>
           <NavLink to="/users" exact={true} activeClassName="active">
@@ -56,7 +55,6 @@ const NavBar = () => {
           </NavLink>
         </li> */}
         {renderLogOut()}
-      </ul>
     </nav>
   );
 };

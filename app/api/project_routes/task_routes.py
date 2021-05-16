@@ -61,7 +61,7 @@ def create_tasks(projectId):
 
 # #  Change a project details - PUT
 
-# @task_routes.route("/<projectId>", methods=["PUT"])
+# @task_routes.route("/", methods=["PUT"])
 # def update_project(projectId):
 #     '''
 #     Updates a project's details
@@ -76,7 +76,7 @@ def create_tasks(projectId):
 
 #         db.session.commit()
 #         return {'message': 'Project Updated!'}
-#     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # # Delete Project – DELETE Route
 # @task_routes.route("/<int:projectId>", methods=["DELETE"])

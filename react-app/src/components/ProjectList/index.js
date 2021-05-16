@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import NewProjectButton from '../NewProjectButton/NewProjectButton';
 import { get_projects, set_selected_project } from "../../store/project";
-
 import './ProjectList.css';
 
 const ProjectList = () => {

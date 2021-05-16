@@ -6,6 +6,7 @@ const initialState = {
 const SET_TASK = 'tasks/SET';
 const ADD_TASK = 'tasks/ADD';
 const UPDATE_TASK = 'tasks/UPDATE';
+const DELETE_TASK = 'tasks/DELETE';
 
 const set = (task) => ({
   type: SET_TASK,
@@ -21,6 +22,12 @@ const update = (task) => ({
   type: UPDATE_TASK,
   payload: task,
 });
+
+const remove = (task) => ({
+  type: DELETE_TASK,
+  payload: task,
+});
+
 
 
 
@@ -93,6 +100,9 @@ const taskReducer = (state = initialState, action) => {
     // REVIEW Is this correct? Same as above? 
     case ADD_TASK:
       return { ...state, tasks_by_id: action.payload.tasks }
+    // Check this.. .where's delete?
+    case DELETE_TASK:
+      return {...state, tasks_by_id: action.payload.tasks }
     default:
       return state;
   }
