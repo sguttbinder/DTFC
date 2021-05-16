@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import NewProjectButton from '../NewProjectButton/NewProjectButton';
-import { get_projects, set_selected_project } from "../../store/project";
+import {
+  get_projects,
+  add_new_project,
+  set_selected_project,
+} from '../../store/project';
 import './ProjectList.css';
 
 const ProjectList = () => {
@@ -11,35 +15,37 @@ const ProjectList = () => {
     // return state.project.projects_by_id
   });
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(get_projects())
-  }, [dispatch])
+    dispatch(get_projects());
+  }, [dispatch]);
 
   const selectProject = (projectId) => {
     // Sends the action to the store... which causes the reducers to run... which will send it to the switch and update the store
-dispatch(set_selected_project(projectId))
-  }
+    dispatch(set_selected_project(projectId));
+  };
   // Blank or dispatch in [] means it loads only on first render
-
+  const add_new_project = async (e) => {
+  await dispatch(add_new_project())
+}
   // to do
   // add useEffect that dispatches get_projects thunk
-  // 
+  //
   if (!projects) {
-    return null
+    return null;
   }
-  
 
-  
   return (
     <div>
       {/* State variable = reveal ... setreveal = useState with default value of false, hidden*/}
-        <button onClick="">Add Project +</button>
-      
+
       <h1> Projects </h1>
       {/* new component or... just hard code the form */}
-      <ul>
+      <button className="newProjectButton" onClick={add_new_project}>
+        Add Project +
+      </button>
+      <div>
         {projects.map((project) => {
           {
             /* Needs a function to send data back to thunk */
@@ -54,7 +60,7 @@ dispatch(set_selected_project(projectId))
         {/* {projects.title} */}
         {/* {projects.title} this won't work... so we'll have to iterate through it and then build out list items*/}
         {/* Render li projects */}
-      </ul>
+      </div>
       {/* ADD PROJECT BUTTON - Component */}
     </div>
   );

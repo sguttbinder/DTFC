@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 // import NewTaskButton from '../NewTaskButton/NewTaskButton';
 import { get_tasks, update_task, add_new_task } from '../../store/task';
 import TaskCard from '../TaskCard/index';
-
 import './TaskView.css';
+
 const TaskView = () => {
   // ASK QUESTIONS HERE - why not line below?.... We want an array
   // const tasks = useSelector(state => state.tasks)

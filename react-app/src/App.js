@@ -10,6 +10,7 @@ import User from './components/Users/User';
 import Sidebar from './components/SideBar/index';
 import SplashPage from './components/SplashPage/index.js';
 import TaskView from './components/TaskView/index.js';
+import AddProjectForm from './components/AddProjectForm'
 
 // import { authenticate } from "./services/auth";
 import { authenticate } from './store/session';
@@ -41,6 +42,11 @@ function App() {
           <NavBar />
           <Sidebar />
           <TaskView />
+        </ProtectedRoute>
+        <ProtectedRoute path="/add-project" exact={true}>
+          <NavBar />
+          <Sidebar />
+          <AddProjectForm />
         </ProtectedRoute>
         <Route path="/login" exact={true}>
           <LoginForm />

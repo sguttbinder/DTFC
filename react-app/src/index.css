@@ -20,4 +20,6 @@ nav {
     width: 80%;
     max-width: 1244px;
     margin: auto;
+    display: flex;
+    justify-content: center;
 }
