@@ -1,7 +1,63 @@
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1)
+     }
+}
 .splash-container {
-    background-color: rgb(223, 223, 223) ;
+    background-color: #37474f ;
     height: 100vh;
+    width: 100%;
+    /* max-width: 1244px; */
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* width: 50%; */
+    
+}
 
+.welcome-box {
+    background-color: white;
+    border-radius: 16px;
+    width: 50%;
+    height: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+font-size: 4em;
+animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+  
+
+.icon-size {
+ font-size: 2em;
+}
+
+.list-icon {
+ align-self: auto;
+}
+
+.logo-font {
+ font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    padding: 0px 10px;
+}
+a:hover {
+    text-decoration: none;
+    color: rgb(191, 191, 191);
+    font-size: 1.2em;
+    padding: 0px 10px;
 }

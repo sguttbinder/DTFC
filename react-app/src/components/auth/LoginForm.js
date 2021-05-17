@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
 import './login.css';
+import '../../index.css'
 import NavBar from "../NavBar/index";
 
 const LoginForm = () => {
@@ -35,9 +36,9 @@ const LoginForm = () => {
 
   return (
     <div className="page-container">
-    <NavBar />
       <div className="login-form-div">
-        <form onSubmit={onLogin}>
+        <i class="fas fa-sign-in-alt icon"></i>
+        <form className=" login-form-div" onSubmit={onLogin}>
           <div>
             {errors.map((error) => (
               <div>{error}</div>
@@ -62,8 +63,10 @@ const LoginForm = () => {
               value={password}
               onChange={updatePassword}
             />
-            <button type="submit">Login</button>
           </div>
+          <button className="NavButton" type="submit">
+            Login
+          </button>
         </form>
       </div>
     </div>

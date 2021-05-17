@@ -5,19 +5,11 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-// import UsersList from './components/UsersList';
-import User from './components/Users/User';
-import Sidebar from './components/SideBar/index';
 import SplashPage from './components/SplashPage/index.js';
-import TaskView from './components/TaskView/index.js';
 import Dashboard from './components/Dashboard/index';
-// import AddProjectForm from './components/AddProjectForm'
-
-// import { authenticate } from "./services/auth";
 import { authenticate } from './store/session';
 
 function App() {
-  // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
 
@@ -51,9 +43,11 @@ function App() {
           <AddProjectForm />
         </ProtectedRoute> */}
         <Route path="/login" exact={true}>
+          <NavBar />
           <LoginForm />
         </Route>
         <Route path="/sign-up" exact={true}>
+          <NavBar />
           <SignUpForm />
         </Route>
         {/* <Redirect from="/" to="/dashboard" /> */}

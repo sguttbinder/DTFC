@@ -40,7 +40,7 @@ const ProjectList = () => {
     <div>
       {/* State variable = reveal ... setreveal = useState with default value of false, hidden*/}
 
-      <h1> Projects </h1>
+      <div className="title-text"> Projects </div>
       {/* new component or... just hard code the form */}
       <button className="newProjectButton" onClick={add_new_project}>
         Add Project +

@@ -44,7 +44,7 @@ const TaskView = () => {
   }
 
   return (
-    <div>
+    <div className="TaskView">
       <button onClick="">Add Task +</button>
       <h1> Tasks</h1>
       <ul>

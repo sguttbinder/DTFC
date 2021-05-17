@@ -6,25 +6,27 @@ import './NavBar.css'
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
-
   const renderSignInLogIn = () => {
     if (user) {
       return null;
     }
+
     return (
       <>
-        <div className='navbar-links'>
-          <div>
-            <NavLink to="/login" exact={true} activeClassName="active">
-              Login
-            </NavLink>
-          </div>
-          <div>
-            <NavLink to="/sign-up" exact={true} activeClassName="active">
-              Sign Up
-            </NavLink>
-          </div>
-        </div>
+        {/* <div className="navbar-links"> */}
+          {/* <div> */}
+          {/* <button className="NavButton"> */}
+          <NavLink to="/login" exact={true} >
+            Login
+          </NavLink>
+          {/* </button> */}
+          {/* </div> */}
+          {/* <div> */}
+          <NavLink to="/sign-up" exact={true} >
+            Sign Up
+          </NavLink>
+          {/* </div> */}
+        {/* </div> */}
       </>
     );
   };
@@ -34,6 +36,9 @@ const NavBar = () => {
     }
     return (
       <>
+          <NavLink to="/dashboard" exact={true} >
+            Dashboard
+          </NavLink>
         <div>
           <LogoutButton />
         </div>
@@ -44,16 +49,11 @@ const NavBar = () => {
   return (
     <nav classname="navBar">
         <div>
-          <NavLink to="/" exact={true} activeClassName="active">
+          <NavLink to="/" exact={true} >
             About
           </NavLink>
         </div>
         {renderSignInLogIn()}
-        {/* <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li> */}
         {renderLogOut()}
     </nav>
   );
