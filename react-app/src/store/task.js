@@ -90,6 +90,23 @@ export const update_task = (projectId, task) => async (dispatch) => {
     return updatedTask;
   }
 };
+export const delete_task = (projectId, task) => async (dispatch) => {
+  console.log(task)
+  const response = await fetch(`/api/projects/${projectId}/tasks/${task.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(task),
+  });
+  const deletedTask = await response.json();
+  // todo
+  if (response.ok) {
+    dispatch(remove(deletedTask));
+    console.log(deletedTask);
+    return deletedTask;
+  }
+};
 
 const taskReducer = (state = initialState, action) => {
   switch (action.type) {

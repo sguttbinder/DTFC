@@ -46,7 +46,7 @@ const TaskView = () => {
   return (
     <div>
       <button onClick="">Add Task +</button>
-      <h1> Tasks RENDERS?</h1>
+      <h1> Tasks</h1>
       <ul>
         {tasks.map((task) => {
           return (

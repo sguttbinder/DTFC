@@ -10,7 +10,7 @@ import User from './components/Users/User';
 import Sidebar from './components/SideBar/index';
 import SplashPage from './components/SplashPage/index.js';
 import TaskView from './components/TaskView/index.js';
-import AddProjectForm from './components/AddProjectForm'
+// import AddProjectForm from './components/AddProjectForm'
 
 // import { authenticate } from "./services/auth";
 import { authenticate } from './store/session';
@@ -43,11 +43,11 @@ function App() {
           <Sidebar />
           <TaskView />
         </ProtectedRoute>
-        <ProtectedRoute path="/add-project" exact={true}>
+        {/* <ProtectedRoute path="/add-project" exact={true}>
           <NavBar />
           <Sidebar />
           <AddProjectForm />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>

@@ -1,8 +1,8 @@
-from flask import Blueprint, jsonify
-from flask_login import login_required
+from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
 from app.models import Project, User, Task, db
 from app.api.project_routes.task_routes import task_routes
-# from app.forms import NewProjectButton
+from app.forms import ProjectForm
 # Does this exist?
 from app.api.auth_routes import validation_errors_to_error_messages
 
@@ -20,25 +20,32 @@ def projects():
     return {"projects": [project.to_dict() for project in projects]}
 
 
-@project_routes.route('/<int:projectId>', methods=['GET'])
-def display_project():
-    project = Project.query.all()
-    # This gets put into the project array
-    return {"projects": [project.to_dict() for project in projects]}
+# @project_routes.route('/<int:projectId>', methods=['GET'])
+# def display_project():
+#     project = Project.query.all()
+#     # This gets put into the project array
+#     return {"projects": [project.to_dict() for project in projects]}
 
 
-@project_routes.route('/create', methods=['POST'])
+@project_routes.route('/', methods=['POST'])
 def create_project():
-    form = NewProductButton()  # doesn't exist yet
+    '''
+    Create a project
+    '''
+    form = ProjectForm()  # doesn't exist yet
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         project = Project(
-            name=form.data['title'],
+            # userId=current_user.id,
+            userId=1,
+            title=form.data['title'],
+            completed=False
         )
         db.session.add(project)
         db.session.commit()
+        return project.to_dict()
     # This gets put into the project array
-        return {"projects": [project.to_dict() for project in projects]}
+        # return {"projects": [project.to_dict() for project in projects]}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 500
 
 
@@ -71,9 +78,9 @@ def delete_project(projectId):
     Deletes a project
     """
     project_to_delete = Project.query.get(projectId)
-    db.session.delete(group_to_project)
+    db.session.delete(project_to_delete)
     db.session.commit()
-    return {'message': 'Project Deleted!'}
+    return {'message': 'Project Deleted`!'}
 
 # How to do cascading deletes?
 

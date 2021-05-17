@@ -26,6 +26,21 @@ def tasks(projectId):
     tasks = Task.query.filter_by(projectId=projectId)
     # This gets put into the task array
     return {"tasks": [task.to_dict() for task in tasks]}
+    
+
+# @task_routes.route('/<int:id>', methods=["GET"])
+# def get_task():
+#     # model.query.QUERYTYPE
+#     task_to_get = Task.query.get(taskId)
+#     return task_to_get
+
+@task_routes.route('/<int:taskId>', methods=['DELETE'])
+def delete_task(taskId):
+    # model.query.QUERYTYPE
+    task_to_delete = Task.query.get(taskId)
+    db.session.delete(task_to_delete)
+    db.session.commit()
+    return {'message': 'Group Deleted!'}
 
 @task_routes.route('/', methods=['POST'])
 def create_tasks(projectId):
@@ -76,7 +91,7 @@ def create_tasks(projectId):
 
 #         db.session.commit()
 #         return {'message': 'Project Updated!'}
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    # return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # # Delete Project – DELETE Route
 # @task_routes.route("/<int:projectId>", methods=["DELETE"])

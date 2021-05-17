@@ -8,4 +8,4 @@ from app.models import Task
 class TaskForm(FlaskForm):
     title = StringField('title', validators=[DataRequired()])
     description = StringField('description')
-    completed = BooleanField('completed', default=False, validators=[DataRequired()])
+    completed = BooleanField('completed', default=False)

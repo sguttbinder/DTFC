@@ -18,9 +18,9 @@ const NewProjectButton = () => {
   //   }
   // };
 
-  const updateProject = (e) => {
-    setProject(e.target.value);
-  };
+  // const updateProject = (e) => {
+  //   setProject(e.target.value);
+  // };
 
   // const updatePassword = (e) => {
   //   setPassword(e.target.value);

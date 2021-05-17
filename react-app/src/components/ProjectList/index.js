@@ -26,9 +26,9 @@ const ProjectList = () => {
     dispatch(set_selected_project(projectId));
   };
   // Blank or dispatch in [] means it loads only on first render
-  const add_new_project = async (e) => {
-  await dispatch(add_new_project())
-}
+  const add_new_project = (project) => {
+    dispatch(add_new_project(project))
+  }
   // to do
   // add useEffect that dispatches get_projects thunk
   //

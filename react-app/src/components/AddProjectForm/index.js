@@ -6,9 +6,9 @@ import { add_project } from '../../store/project';
 const AddProjectForm = () => {
   const dispatch = useDispatch();
 
-  const addProject = (e) => {
-    setProject(e.target.value);
-  };
+  // const addProject = (e) => {
+  //   setProject(e.target.value);
+  // };
 
   return (
     // What's this form called?
