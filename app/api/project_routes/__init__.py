@@ -72,15 +72,19 @@ def update_project(projectId):
 
 
 @project_routes.route("/<projectId>", methods=["DELETE"])
-# Is this correct?
 def delete_project(projectId):
     """
     Deletes a project
     """
-    project_to_delete = Project.query.get(projectId)
+    project_to_delete=Project.query.get(projectId)
     db.session.delete(project_to_delete)
     db.session.commit()
     return {'message': 'Project Deleted`!'}
+
+    # This gets put into the project array
+    # return {"projects": [project.to_dict() for project in projects]}
+    # return {'errors': validation_errors_to_error_messages(form.errors)}, 500
+
 
 # How to do cascading deletes?
 
