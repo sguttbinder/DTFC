@@ -7,6 +7,8 @@ const SET_PROJECT = 'projects/SET';
 const ADD_PROJECT = 'projects/ADD';
 const UPDATE_PROJECT = 'projects/UPDATE';
 const SET_SELECTED_PROJECT = 'projects/SELECT';
+const REMOVE_PROJECT = 'projects/REMOVE';
+
 
 const set = (project) => ({
   type: SET_PROJECT,
@@ -22,6 +24,8 @@ const update = (project) => ({
   type: UPDATE_PROJECT,
   payload: project,
 });
+
+// Thunks
 
 export const set_selected_project = (projectId) => ({
   type: SET_SELECTED_PROJECT,
@@ -42,19 +46,21 @@ export const get_projects = () => async (dispatch) => {
   }
 };
 // dispatch the SET_PROJECTS action
-export const add_new_project = (project) => async (dispatch) => {
-  console.log(project);
+export const add_new_project = (title) => async (dispatch) => {
+  console.log(title);
   const response = await fetch(`/api/projects/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(project),
+    // body: JSON.stringify({title}),
+    body: JSON.stringify(title),
   });
   const newProject = await response.json();
   if (response.ok) {
     dispatch(add(newProject));
     console.log(newProject);
+    // return newProject;
     return newProject;
   }
 };

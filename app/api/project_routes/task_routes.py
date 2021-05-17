@@ -2,10 +2,8 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Project, User, Task, db
 from app.forms import TaskForm
-# Does this exist?
 from app.api.auth_routes import validation_errors_to_error_messages
 
-# Can we go over this line?
 task_routes = Blueprint('tasks', __name__)
 
 
@@ -34,13 +32,13 @@ def tasks(projectId):
 #     task_to_get = Task.query.get(taskId)
 #     return task_to_get
 
-@task_routes.route('/<int:taskId>', methods=['DELETE'])
-def delete_task(taskId):
-    # model.query.QUERYTYPE
-    task_to_delete = Task.query.get(taskId)
-    db.session.delete(task_to_delete)
-    db.session.commit()
-    return {'message': 'Group Deleted!'}
+# @task_routes.route('/<int:taskId>', methods=['POST'])
+# def delete_task(taskId):
+#     # model.query.QUERYTYPE
+#     task_to_delete = Task.query.get(taskId)
+#     db.session.delete(task_to_delete)
+#     db.session.commit()
+#     return {'message': 'Group Deleted!'}
 
 @task_routes.route('/', methods=['POST'])
 def create_tasks(projectId):
@@ -48,12 +46,11 @@ def create_tasks(projectId):
     Create a task within a project
     '''
     form = TaskForm()
-    # Is below needed? Probably.
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
         task = Task(
-            userId=current_user.id,
+            # userId=current_user.id,
+            userId=1,
             title=form.data['title'],
             description=form.data['description'],
             projectId=projectId,

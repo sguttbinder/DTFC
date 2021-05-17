@@ -1,17 +1,24 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Project, User, Task, db
-from app.api.project_routes.task_routes import task_routes
+# from app.api.project_routes.task_routes import task_routes
 from app.forms import ProjectForm
-# Does this exist?
 from app.api.auth_routes import validation_errors_to_error_messages
 
-# Can we go over this line?
 project_routes = Blueprint('projects', __name__)
 # project_routes.register_blueprint(task_routes, url_prefix='/<int:projectId>')
-
 # Get Data on project
 
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f"{field} : {error}")
+    return errorMessages
 
 @project_routes.route('/')
 def projects():
@@ -28,16 +35,16 @@ def projects():
 
 
 @project_routes.route('/', methods=['POST'])
-def create_project():
+def add_project():
     '''
     Create a project
     '''
-    form = ProjectForm()  # doesn't exist yet
+    form = ProjectForm()  
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         project = Project(
             # userId=current_user.id,
-            userId=1,
+            userId=current_user.id,
             title=form.data['title'],
             completed=False
         )
@@ -71,7 +78,7 @@ def update_project(projectId):
 # Delete Project – DELETE Route
 
 
-@project_routes.route("/<projectId>", methods=["DELETE"])
+@project_routes.route("/<int:projectId>/delete", methods=["POST"])
 def delete_project(projectId):
     """
     Deletes a project

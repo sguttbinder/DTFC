@@ -6,6 +6,7 @@ import {
   add_new_project,
   set_selected_project,
 } from '../../store/project';
+import NewProjectButton from '../NewProjectButton/NewProjectButton';
 import './ProjectList.css';
 
 const ProjectList = () => {
@@ -42,9 +43,15 @@ const ProjectList = () => {
 
       <div className="title-text"> Projects </div>
       {/* new component or... just hard code the form */}
-      <button className="newProjectButton" onClick={add_new_project}>
+      {/* <button className="newProjectButton" onClick={add_new_project}>
         Add Project +
-      </button>
+      </button> */}
+      <NewProjectButton
+        // title={project.title}
+        // Below helps match it to TaskCard and TaskView
+        onSave={add_new_project}
+        // id={project.id}
+      />
       <div>
         {projects.map((project) => {
           {
