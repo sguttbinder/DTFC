@@ -43,8 +43,9 @@ def add_project():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         project = Project(
-            # userId=current_user.id,
+            # Current user didn't work...
             userId=current_user.id,
+            # userId=1,
             title=form.data['title'],
             completed=False
         )
@@ -57,7 +58,7 @@ def add_project():
 
 
 #  Change a project details - PUT
-
+# Never got here... couldn't figure out POST.
 @project_routes.route("/<projectId>", methods=["PUT"])
 def update_project(projectId):
     '''

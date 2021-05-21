@@ -49,8 +49,8 @@ def create_tasks(projectId):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         task = Task(
-            # userId=current_user.id,
-            userId=1,
+            userId=current_user.id,
+            # userId=1,
             title=form.data['title'],
             description=form.data['description'],
             projectId=projectId,

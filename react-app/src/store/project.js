@@ -47,14 +47,15 @@ export const get_projects = () => async (dispatch) => {
 };
 // dispatch the SET_PROJECTS action
 export const add_new_project = (title) => async (dispatch) => {
-  console.log(title);
+  console.log("Were here");
   const response = await fetch(`/api/projects/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    // body: JSON.stringify({title}),
-    body: JSON.stringify(title),
+    body: JSON.stringify({ title })
+    // Not the one below
+    // body: JSON.stringify(title),
   });
   const newProject = await response.json();
   if (response.ok) {
