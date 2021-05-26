@@ -75,36 +75,42 @@ def create_tasks(projectId):
 
 # #  Change a project details - PUT
 
-# @task_routes.route("/", methods=["PUT"])
-# def update_project(projectId):
-#     '''
-#     Updates a project's details
-#     '''
-#     project_to_update = Project.query.get(projectId)
-#     form = ProjectForm()
-#     # Do we need line below?
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         title = form.data['title']
-#         project_to_update.title = title
+@task_routes.route("/<int:taskId>", methods=["PUT"])
+def update_task(projectId, taskId):
+    '''
+    Updates a project's details
+    '''
+    task_to_update = Task.query.get(taskId)
+    form = TaskForm()
+    # Do we need line below?
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        title = form.data['title']
+        description = form.data['description']
+        completed = form.data['completed']
+        task_to_update.title = title
+        task_to_update.descrtiption = description
+        task_to_update.completed = completed
 
-#         db.session.commit()
-#         return {'message': 'Project Updated!'}
-    # return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+        db.session.commit()
+        return {'message': 'Task Updated!'}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-# # Delete Project – DELETE Route
-# @task_routes.route("/<int:projectId>", methods=["DELETE"])
-# # Is this correct?
-# def delete_project(projectId):
-#     """
-#     Deletes a project
-#     """
-#     project_to_delete = Project.query.get(projectId)
-#     db.session.delete(group_to_project)
-#     db.session.commit()
-#     return {'message': 'Project Deleted!'}
 
-# # How to do cascading deletes?
+@task_routes.route("/<int:taskId>/", methods=["DELETE"])
+def delete_task(projectId, taskId):
+# def delete_task(projectId, ''' taskId '''):
+    """
+    Deletes a task
+    """
+    task_to_delete = Task.query.get(taskId)
+    db.session.delete(task_to_delete)
+    db.session.commit()
+    return {'message': 'Task Deleted`!'}
+
+    # This gets put into the project array
+    # return {"projects": [project.to_dict() for project in projects]}
+    # return {'errors': validation_errors_to_error_messages(form.errors)}, 500
 
 
 

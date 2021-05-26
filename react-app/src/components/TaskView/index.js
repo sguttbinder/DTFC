@@ -39,7 +39,7 @@ const TaskView = () => {
   };
 
   const save_task = (task) => {
-    // console.log(task);
+    console.log("Press Me");
     dispatch(update_task(selected_project, task));
 
     // Need to make sure the task.id is in the card.

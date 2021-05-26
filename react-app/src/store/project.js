@@ -72,20 +72,19 @@ export const add_new_project = (title) => async (dispatch) => {
   }
 };
 
+// ANCHOR Delete
 export const delete_project = (projectId) => async (dispatch) => {
   const response = await fetch(`/api/projects/${projectId}`, {
-    // REVIEW is this a POST?
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(projectId),
+    method: 'DELETE',
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // },
+    // body: JSON.stringify(projectId)
   });
   const deletedProject = await response.json();
-  // todo
+  
   if (response.ok) {
     dispatch(remove(deletedProject));
-    console.log(deletedProject);
     return deletedProject;
   }
 };

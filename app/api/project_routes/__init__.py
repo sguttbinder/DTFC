@@ -76,10 +76,9 @@ def update_project(projectId):
         return {'message': 'Project Updated!'}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
-# Delete Project – DELETE Route
+# ANCHOR Delete Project – DELETE Route
 
-
-@project_routes.route("/<int:projectId>/delete", methods=["POST"])
+@project_routes.route("/<int:projectId>", methods=["DELETE"])
 def delete_project(projectId):
     """
     Deletes a project

@@ -80,7 +80,7 @@ export const update_task = (projectId, task) => async (dispatch) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(task),
+    body: JSON.stringify({task}),
   });
   const updatedTask = await response.json();
   // todo

@@ -5,6 +5,7 @@ class Task(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   projectId = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
+  # projectId = db.Column(db.Integer, db.ForeignKey('projects.id', onDelete='CASCADE'), nullable=False)
   userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   title = db.Column(db.String(100), nullable=False)
   description = db.Column(db.Text, nullable=True)
