@@ -45,6 +45,8 @@ def create_tasks(projectId):
     '''
     Create a task within a project
     '''
+    print(current_user.id, "--------")
+
     form = TaskForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

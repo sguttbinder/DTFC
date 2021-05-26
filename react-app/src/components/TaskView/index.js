@@ -9,7 +9,12 @@ const TaskView = () => {
   // ASK QUESTIONS HERE - why not line below?.... We want an array
   // const tasks = useSelector(state => state.tasks)
   const selected_project = useSelector((state) => {
-    return state.project.selected_project;
+    if (state.project.selected_project) {
+      return state.project.selected_project;
+    } else {
+      // TODO get first item in list
+      return 1;
+    }
   });
 
   const tasks = useSelector((state) => {
@@ -27,9 +32,10 @@ const TaskView = () => {
   }, [selected_project]);
 
   // Use useEffect to get get_tasks thunk
-// Make a boolean state 
+  // Make a boolean state
+  // ANCHOR Add Task
   const add_task = (task) => {
-        dispatch(add_new_task(selected_project, task));
+    dispatch(add_new_task(selected_project, task));
   };
 
   const save_task = (task) => {
