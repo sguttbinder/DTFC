@@ -49,7 +49,7 @@ const TaskCard = (props) => {
           setCompleted(false);
         }}
       >
-        Save{' '}
+        Monkey 2{` ${props.id}`}
       </button>
       {/* <button onClick={}>Delete </button> */}
     </div>

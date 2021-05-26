@@ -35,7 +35,7 @@ export const set_selected_task = (taskId) => ({
   type: SET_SELECTED_TASK,
   payload: taskId,
 });
-// TODO dispate the set tasks
+// TODO dispatch the set tasks
 
 // ANCHOR Show Task
 export const get_tasks = (projectId) => async (dispatch) => {
@@ -52,13 +52,12 @@ export const get_tasks = (projectId) => async (dispatch) => {
 };
 // ANCHOR Add A Task
 export const add_new_task = (projectId, task) => async (dispatch) => {
-  console.log('Were here - project', projectId);
   const response = await fetch(`/api/projects/${projectId}/tasks/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({task}),
+    body: JSON.stringify({ task }),
   });
   const newTask = await response.json();
   // todo
@@ -69,33 +68,44 @@ export const add_new_task = (projectId, task) => async (dispatch) => {
     // ** don't seem to have an intitial state
     // eg.
     //   TODO Don't forget to add to reducer
-    return newTask;
+    return true;
+  } else {
+    return false;
   }
 };
 // ANCHOR Update A Task
 export const update_task = (projectId, task) => async (dispatch) => {
-  console.log(task)
+  console.log(task, projectId);
   const response = await fetch(`/api/projects/${projectId}/tasks/${task.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({task}),
+    // Organize what we want below
+    body: JSON.stringify({
+      title: task.title,
+      description: task.description,
+      completed: task.completed,
+    }),
   });
-  const updatedTask = await response.json();
   // todo
   if (response.ok) {
-    dispatch(update(updatedTask));
+    dispatch(update(task));
     // set... will take task and use the reducer near the bottom to get the task added to the slice of state
     // ** don't seem to have an intitial state
     // eg.
     //   TODO Don't forget to add to reducer
-    console.log(updatedTask);
-    return updatedTask;
+    // console.log({task.id});
+    return true;
+  } else {
+    return false;
   }
 };
+
+// ANCHOR Delete A Task
+
 export const delete_task = (projectId, task) => async (dispatch) => {
-  console.log(task)
+  console.log(task);
   const response = await fetch(`/api/projects/${projectId}/tasks/${task.id}`, {
     method: 'PUT',
     headers: {
@@ -112,24 +122,36 @@ export const delete_task = (projectId, task) => async (dispatch) => {
   }
 };
 
-
 // ANCHOR Reducer
 const taskReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_TASK:
       // Return a new object.. with content of all old objects (state) AND all the contrnt that is in action.payload
       // return state
-      return { ...state, tasks_by_id: action.payload.tasks }
-    // REVIEW Is this correct? Same as above? 
+      return { ...state, tasks_by_id: action.payload.tasks };
+    // REVIEW Is this correct? Same as above?
     case ADD_TASK:
       return {
         ...state,
         tasks_by_id: [...state.tasks_by_id, action.payload.tasks],
       };
+    case UPDATE_TASK:
+      console.log(state.tasks_by_id[0].id);
+      const taskId = action.payload.id
+      const allTasks = state.tasks_by_id
+      for (let i = 0; i < allTasks.length; i++) {
+        const element = allTasks[i];
+        if (element.id == taskId) {
+          allTasks[i] = action.payload
+        }
+      }
+      state.tasks_by_id[taskId] = action.payload
+      console.log(state)
+      return state
     // Check this.. .where's delete?
     // TODO is this correct for deleting a task?
     case DELETE_TASK:
-      return {...state, tasks_by_id: action.payload.tasks }
+      return { ...state, tasks_by_id: action.payload.tasks };
     case SET_SELECTED_TASK:
       return { ...state, selected_task: action.payload };
     default:

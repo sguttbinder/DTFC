@@ -73,8 +73,8 @@ def create_tasks(projectId):
 #     # This gets put into the project array
 #     return {"projects": [project.to_dict() for project in tasks]}
 
-# #  Change a project details - PUT
 
+# ANCHOR Put Request
 @task_routes.route("/<int:taskId>", methods=["PUT"])
 def update_task(projectId, taskId):
     '''
@@ -85,13 +85,14 @@ def update_task(projectId, taskId):
     # Do we need line below?
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print("we got right here", form.data)
         title = form.data['title']
         description = form.data['description']
         completed = form.data['completed']
         task_to_update.title = title
         task_to_update.descrtiption = description
         task_to_update.completed = completed
-
+        print("we got right here", task_to_update.title)
         db.session.commit()
         return {'message': 'Task Updated!'}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { add_new_task } from '../../store/task';
+import { add_new_task, update_task } from '../../store/task';
 
 const NewTaskButton = () => {
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const NewTaskButton = () => {
           onChange={update_task}
         />
       </div>
-      <button type="submit">Save Task</button>
+      <button type="submit">Monkey</button>
     </form>
   );
 };
