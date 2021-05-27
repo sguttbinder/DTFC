@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import './TaskCard.css';
+// import './TaskCardNew.css';
 // useState hook to deal with local state that is 'Title'
 
 // This is what the onChange is
 // What is the props? The data that we're passing in through the Task index
-const TaskCard = (props) => {
+const TaskCardNew = (props) => {
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
   const [completed, setCompleted] = useState(props.completed);
@@ -50,7 +50,7 @@ const TaskCard = (props) => {
   // };
 
   return (
-    <div className="TaskCard">
+    <div className="TaskCardNew">
       <input
         type="checkbox"
         name="completed"
@@ -62,9 +62,10 @@ const TaskCard = (props) => {
       <textarea
         type="text"
         name="description"
-        value={description }
+        value={description}
         onChange={updateDescription}
-      ></textarea>
+      >
+      </textarea>
       <button
         onClick={() => {
           props.onSave({
@@ -73,12 +74,11 @@ const TaskCard = (props) => {
             description,
             completed,
             // This one is not getting modified
-            id: props.id,
           });
 
-          // // setDescription('');
-          // setTitle('');
-          // setCompleted(false);
+          setDescription('');
+          setTitle('');
+          setCompleted(false);
         }}
       >
         Monkey 2{` ${props.id}`}
@@ -88,4 +88,4 @@ const TaskCard = (props) => {
   );
 };
 
-export default TaskCard;
+export default TaskCardNew;
