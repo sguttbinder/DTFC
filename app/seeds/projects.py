@@ -1,6 +1,5 @@
 from app.models import db, Project
 
-
 def seed_projects():
 
     project1 = Project(
@@ -22,5 +21,5 @@ def seed_projects():
 
 
 def undo_projects():
-    db.session.execute('TRUNCATE projects RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE projects      CASCADE;')
     db.session.commit()

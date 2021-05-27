@@ -1,6 +1,5 @@
 from app.models import db, Task
 
-
 def seed_tasks():
 
     task1 = Task(
@@ -35,5 +34,5 @@ def seed_tasks():
 
 
 def undo_tasks():
-    db.session.execute('TRUNCATE tasks RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE tasks CASCADE;')
     db.session.commit()
