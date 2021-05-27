@@ -9,7 +9,7 @@ const NewProjectButton = (props) => {
   const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState('')
   // const [title, setTitle] = useState(props.title)
-  const [completed, setCompleted] = useState('False')
+  // const [completed, setCompleted] = useState('False')
 
   const addProject = async (e) => {
     e.preventDefault();
