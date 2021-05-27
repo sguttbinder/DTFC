@@ -37,7 +37,7 @@ export const set_selected_project = (projectId) => ({
 });
 
 export const get_projects = () => async (dispatch) => {
-  const response = await fetch('/api/projects');
+  const response = await fetch('/api/projects/');
   const projects = await response.json();
   // todo
   if (response.ok) {

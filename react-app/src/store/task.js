@@ -39,7 +39,7 @@ export const set_selected_task = (taskId) => ({
 
 // ANCHOR Show Task
 export const get_tasks = (projectId) => async (dispatch) => {
-  const response = await fetch(`/api/projects/${projectId}/tasks`);
+  const response = await fetch(`/api/projects/${projectId}/tasks/`);
   const tasks = await response.json();
   // todo
   if (response.ok) {
