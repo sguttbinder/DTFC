@@ -3,12 +3,12 @@ import './TaskCard.css';
 // useState hook to deal with local state that is 'Title'
 
 // This is what the onChange is
-
+// What is the props? The data that we're passing in through the Task index
 const TaskCard = (props) => {
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
   const [completed, setCompleted] = useState(props.completed);
-
+console.log(title,"we are printing the title")
   const updateTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -44,9 +44,9 @@ const TaskCard = (props) => {
             id: props.id,
           });
 
-          setDescription('');
-          setTitle('');
-          setCompleted(false);
+          // // setDescription('');
+          // setTitle('');
+          // setCompleted(false);
         }}
       >
         Monkey 2{` ${props.id}`}

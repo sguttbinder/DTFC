@@ -50,24 +50,25 @@ export const get_tasks = (projectId) => async (dispatch) => {
   }
   return tasks;
 };
-// ANCHOR Add A Task
-export const add_new_task = (projectId, task) => async (dispatch) => {
+// ANCHOR Add A New Task
+export const add_new_task = (projectId, taskInfo) => async (dispatch) => {
+  console.log('We Are adding a new task');
+  console.log(taskInfo);
   const response = await fetch(`/api/projects/${projectId}/tasks/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ task }),
+    body: JSON.stringify({
+      title: taskInfo.title,
+      description: taskInfo.description,
+      completed: taskInfo.completed,
+    }),
   });
-  const newTask = await response.json();
-  // todo
   if (response.ok) {
+    const newTask = await response.json();
     dispatch(add(newTask));
-    console.log(newTask);
-    // set... will take task and use the reducer near the bottom to get the task added to the slice of state
-    // ** don't seem to have an intitial state
-    // eg.
-    //   TODO Don't forget to add to reducer
+    console.log("We added a new", newTask);
     return true;
   } else {
     return false;
@@ -88,8 +89,8 @@ export const update_task = (projectId, task) => async (dispatch) => {
       completed: task.completed,
     }),
   });
-  // todo
   if (response.ok) {
+    await response.json();
     dispatch(update(task));
     // set... will take task and use the reducer near the bottom to get the task added to the slice of state
     // ** don't seem to have an intitial state
@@ -121,6 +122,8 @@ export const delete_task = (projectId, task) => async (dispatch) => {
     return deletedTask;
   }
 };
+// TODO This is called normalizing data. I want to go right to the right data, not traverse through a million tasks
+// state = {1:{task1}, 2:{task2}}
 
 // ANCHOR Reducer
 const taskReducer = (state = initialState, action) => {
@@ -131,23 +134,22 @@ const taskReducer = (state = initialState, action) => {
       return { ...state, tasks_by_id: action.payload.tasks };
     // REVIEW Is this correct? Same as above?
     case ADD_TASK:
-      return {
-        ...state,
-        tasks_by_id: [...state.tasks_by_id, action.payload.tasks],
-      };
+      state.tasks_by_id.push(action.payload);
+      return state;
+    // return {
+    //   ...state,
+    //   tasks_by_id: [...state.tasks_by_id, action.payload.tasks],
+    // };
     case UPDATE_TASK:
-      console.log(state.tasks_by_id[0].id);
-      const taskId = action.payload.id
-      const allTasks = state.tasks_by_id
+      const taskId = action.payload.id;
+      const allTasks = state.tasks_by_id;
       for (let i = 0; i < allTasks.length; i++) {
         const element = allTasks[i];
         if (element.id == taskId) {
-          allTasks[i] = action.payload
+          allTasks[i] = action.payload;
         }
       }
-      state.tasks_by_id[taskId] = action.payload
-      console.log(state)
-      return state
+      return state;
     // Check this.. .where's delete?
     // TODO is this correct for deleting a task?
     case DELETE_TASK:

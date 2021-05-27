@@ -45,18 +45,15 @@ def create_tasks(projectId):
     '''
     Create a task within a project
     '''
-    print(current_user.id, "--------")
-
     form = TaskForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         task = Task(
             userId=current_user.id,
-            # userId=1,
             title=form.data['title'],
             description=form.data['description'],
             projectId=projectId,
-            completed=False
+            completed=form.data['completed']
         )
         db.session.add(task)
         db.session.commit()
@@ -85,14 +82,14 @@ def update_task(projectId, taskId):
     # Do we need line below?
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print("we got right here", form.data)
+        print("We are sending a PUT request...", form.data)
         title = form.data['title']
         description = form.data['description']
         completed = form.data['completed']
         task_to_update.title = title
-        task_to_update.descrtiption = description
+        task_to_update.description = description
         task_to_update.completed = completed
-        print("we got right here", task_to_update.title)
+        print("ended the PUT request", task_to_update.title)
         db.session.commit()
         return {'message': 'Task Updated!'}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400

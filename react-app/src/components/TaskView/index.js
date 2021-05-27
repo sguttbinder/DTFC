@@ -17,10 +17,10 @@ const TaskView = () => {
     }
   });
 
-  const tasks = useSelector((state) => {
-    return Object.values(state.task.tasks_by_id);
+  const tasks = useSelector((state) => state.task.tasks_by_id)    // return Object.values(state.task.tasks_by_id);
+    
     // Why not just return state.tasks_by_id) Returns an object instead  of an array... and you can't iterate at all
-  });
+  // });
 
   const dispatch = useDispatch();
 
@@ -56,6 +56,7 @@ const TaskView = () => {
 useEffect(() => {
   
   if (loaded) {
+    console.log("We are reloading")
     renderTasks()
     setLoaded(false)
   }
@@ -67,25 +68,27 @@ useEffect(() => {
   }
   // If we update our tasks... what would happen? We wait for setLoaded to occur... signalling that we need to re-render ONLY this block of code/component
   let renderTasks = () => {
-    return tasks.map((task) => {
+    console.log(tasks)
+    return (tasks && Object.values(tasks).map((task) => {
+      console.log(task)
       return (
         <>
           <li>
             {/* {task.title} {task.description} {task.completed} */}
             {/* Refer to props  as to why the below works */}
             <TaskCard
+              id={task.id}
               title={task.title}
               description={task.description}
               completed={task.completed}
               // Below helps match it to TaskCard and TaskView
               onSave={save_task}
-              id={task.id}
             />
           </li>
           {/* Delete button will go here */}
         </>
       );
-    });
+    }));
   };
 
   return (
