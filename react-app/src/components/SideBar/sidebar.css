@@ -5,12 +5,12 @@
   padding: 10px;
   padding-top: 30px;
   width: 20%;
-  height: auto;
+  height: 100vh;
   text-align: center;
   color:white;
   font-size: 1em;
   left: 0px;
-  position: fixed;
+  /* position: fixed; */
 }
 
 .title-text {

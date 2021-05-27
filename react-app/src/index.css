@@ -21,11 +21,12 @@ nav {
 }
 .page-container {
   /* background-color: #263238; */
-  width: 80%;
-  max-width: 1244px;
+  /* width: 80%; */
+  /* max-width: 1244px; */
   height: 100vh;
   margin: auto;
   display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 
