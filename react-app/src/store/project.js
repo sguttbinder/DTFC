@@ -74,7 +74,8 @@ export const add_new_project = (title) => async (dispatch) => {
 
 // ANCHOR Delete
 export const delete_project = (projectId) => async (dispatch) => {
-  const response = await fetch(`/api/projects/${projectId}`, {
+  console.log('About to fetch project....', projectId);
+  const response = await fetch(`/api/projects/${projectId}/`, {
     method: 'DELETE',
     // headers: {
     //   'Content-Type': 'application/json',

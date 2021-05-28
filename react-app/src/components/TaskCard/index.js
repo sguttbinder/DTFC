@@ -26,9 +26,9 @@ const TaskCard = (props) => {
   };
 
   const dispatch = useDispatch();
-  const select_task = (taskId) => {
-    dispatch(set_selected_task(taskId) )
-  };
+  // const select_task = (taskId) => {
+  //   dispatch(set_selected_task(taskId) )
+  // };
   const handleDelete = (projectId, task) => {
     dispatch(delete_task(projectId, task))
     window.location.reload();
@@ -114,13 +114,9 @@ const TaskCard = (props) => {
         Save Task
       </button>
 
-      {/* ANCHOR Delete Button */}
+      {/* NOTE Delete Button */}
       <button
-        onClick={() => {console.log("Trying to delete")}
-        
-        }
         onClick={() => handleDelete(props.project, props.id)
-        
         }
       >
         Delete Task

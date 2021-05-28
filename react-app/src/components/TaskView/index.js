@@ -10,6 +10,7 @@ import {
   add_new_task,
   delete_task,
 } from '../../store/task';
+import DeleteProjectButton from '../DeleteProjectButton/DeleteProjectButton';
 
 import TaskCard from '../TaskCard/index';
 import TaskCardNew from '../TaskCardNew';
@@ -135,6 +136,7 @@ const TaskView = () => {
   return (
     <div className="TaskView">
       <div className="Title">Tasks for Project</div>
+        <DeleteProjectButton />
       <ul>
         {renderTasks()}
         {renderNewTask()}
