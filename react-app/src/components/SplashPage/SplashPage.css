@@ -33,6 +33,18 @@
     
 }
 
+.logo-corner {
+    position: absolute ;
+    align-self: center;
+    /* top: 0; */
+    left: 10px;
+    color: white
+}
+.logo-corner-text {
+    font-size: 1.7em;
+    font-weight: 700 ;
+}
+
 .welcome-box {
     background-color: white;
     border-radius: 16px;

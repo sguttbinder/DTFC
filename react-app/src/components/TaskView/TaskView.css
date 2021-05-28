@@ -4,3 +4,8 @@
     /* height: 100vh;
     position: sticly */
 }
+.Title {
+    font-size: 3.5em;
+    padding: 25px 25px 25px 25px;
+    font-weight: 600
+}

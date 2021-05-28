@@ -1,28 +1,19 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { login, demo } from '../../store/session';
+import { demo } from '../../store/session';
 import './login.css';
 import '../../index.css';
 import NavBar from '../NavBar/index';
-import DemoForm from './DemoForm';
 
-const LoginForm = () => {
+const DemoForm = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('demo@aa.io');
+  const [password, setPassword] = useState('password');
 
   const onLogin = async (e) => {
-    e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data.errors) {
-      setErrors(data.errors);
-    }
-  };
-
-  const onLoginDemo = async (e) => {
     e.preventDefault();
     const data = await dispatch(demo(email, password));
     if (data.errors) {
@@ -31,12 +22,12 @@ const LoginForm = () => {
   };
   // This is what the onChange is
   const updateEmail = (e) => {
-    setEmail(e.target.value);
+    setEmail("demo@aa.io");
   };
 
   // This is what the onChange is
   const updatePassword = (e) => {
-    setPassword(e.target.value);
+    setPassword("password");
   };
 
   if (user) {
@@ -44,18 +35,15 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="page-container">
-      <div className="login-form-div">
-        <i class="fas fa-sign-in-alt icon"></i>
-        <form className="login-form-div" onSubmit={onLogin}>
+        <form onSubmit={onLogin}>
           <div>
             {errors.map((error) => (
               <div>{error}</div>
             ))}
           </div>
           <div>
-            <label htmlFor="email">Email</label>
             <input
+              className="hidden-input"
               name="email"
               type="text"
               placeholder="Email"
@@ -63,9 +51,9 @@ const LoginForm = () => {
               onChange={updateEmail}
             />
           </div>
-          <div>
-            <label htmlFor="password">Password</label>
+          <div className="hidden-input">
             <input
+              className="hidden-input"
               name="password"
               type="password"
               placeholder="Password"
@@ -74,13 +62,10 @@ const LoginForm = () => {
             />
           </div>
           <button className="NavButton" type="submit">
-            Login
+            Demo
           </button>
         </form>
-        
-      </div>
-    </div>
   );
-};
 
-export default LoginForm;
+}
+export default DemoForm;

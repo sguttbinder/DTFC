@@ -46,7 +46,6 @@ export const get_tasks = (projectId) => async (dispatch) => {
     dispatch(set(tasks));
     // set... will take task and use the reducer near the bottom to get the tasks added to the slice of state
     // ** don't seem to have an intitial state
-    console.log(tasks);
   }
   return tasks;
 };
@@ -106,16 +105,16 @@ export const update_task = (projectId, task) => async (dispatch) => {
 // ANCHOR Delete A Task
 
 export const delete_task = (projectId, task) => async (dispatch) => {
-  console.log(task);
-  const response = await fetch(`/api/projects/${projectId}/tasks/${task.id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(task),
+  console.log("About to fetch....", projectId, task)
+  const response = await fetch(`/api/projects/${projectId}/tasks/${task}`, {
+    method: 'DELETE',
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // },
+    // body: JSON.stringify(task),
   });
   const deletedTask = await response.json();
-  // todo
+  // // todo
   if (response.ok) {
     dispatch(remove(deletedTask));
     console.log(deletedTask);

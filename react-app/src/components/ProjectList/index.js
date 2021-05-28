@@ -27,7 +27,7 @@ const ProjectList = () => {
     dispatch(set_selected_project(projectId));
   };
   // Blank or dispatch in [] means it loads only on first render
-  const add_new_project = (project) => {
+  const add_new = (project) => {
     dispatch(add_new_project(project))
   }
   // to do
@@ -49,7 +49,7 @@ const ProjectList = () => {
       <NewProjectButton
         // title={project.title}
         // Below helps match it to TaskCard and TaskView
-        onSave={add_new_project}
+        onSave={add_new}
         // id={project.id}
       />
       <div>

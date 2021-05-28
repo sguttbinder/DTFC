@@ -95,12 +95,13 @@ def update_task(projectId, taskId):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-@task_routes.route("/<int:taskId>/", methods=["DELETE"])
+@task_routes.route("/<int:taskId>", methods=["DELETE"])
 def delete_task(projectId, taskId):
 # def delete_task(projectId, ''' taskId '''):
     """
     Deletes a task
     """
+    print("we got here")
     task_to_delete = Task.query.get(taskId)
     db.session.delete(task_to_delete)
     db.session.commit()

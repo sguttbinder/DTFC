@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { get_tasks, set_selected_task, delete_task } from '../../store/task';
+
 import './TaskCard.css';
 // useState hook to deal with local state that is 'Title'
-
 // This is what the onChange is
 // What is the props? The data that we're passing in through the Task index
 const TaskCard = (props) => {
   const [title, setTitle] = useState(props.title);
   const [description, setDescription] = useState(props.description);
   const [completed, setCompleted] = useState(props.completed);
-
+  // const [taskId, setTaskId] = useState(props.id);
   // console.log(title, 'This prints every keystroke for Title... and updates props which even though is just part of a component... it changes the entire component');
-
   // Every time an input happens... onChange changes the state.
   const updateTitle = (e) => {
     setTitle(e.target.value);
@@ -23,6 +24,26 @@ const TaskCard = (props) => {
   const updateCompleted = (e) => {
     setCompleted(e.target.checked);
   };
+
+  const dispatch = useDispatch();
+  const select_task = (taskId) => {
+    dispatch(set_selected_task(taskId) )
+  };
+  const handleDelete = (projectId, task) => {
+    dispatch(delete_task(projectId, task))
+    window.location.reload();
+}
+  // const deleteTask = (e) => {
+  //   setTaskId(e.target.id)
+  // }
+
+  // const remove_task = async (e) => {
+  //   e.preventDefault();
+  //   const data = await dispatch(delete_task(selected_project));
+  //   if (data.errors) {
+  //     setErrors(data.errors);
+  //   }
+  // };
 
   // Create a helper function for clicking submit
   // const handleSubmit = () => {
@@ -64,7 +85,6 @@ const TaskCard = (props) => {
         value={title}
         className="formField-Title"
         onChange={updateTitle}
-        
       />
       <textarea
         type="text"
@@ -73,6 +93,7 @@ const TaskCard = (props) => {
         value={description}
         onChange={updateDescription}
       ></textarea>
+      {/* NOTE Save Button */}
       <button
         onClick={() => {
           props.onSave({
@@ -89,9 +110,21 @@ const TaskCard = (props) => {
           // setCompleted(false);
         }}
       >
-        Save Task{` ${props.id}`}
+        {/* Save Task{` ${props.id}`} */}
+        Save Task
       </button>
-      {/* <button onClick={}>Delete </button> */}
+
+      {/* ANCHOR Delete Button */}
+      <button
+        onClick={() => {console.log("Trying to delete")}
+        
+        }
+        onClick={() => handleDelete(props.project, props.id)
+        
+        }
+      >
+        Delete Task
+      </button>
     </div>
   );
 };
