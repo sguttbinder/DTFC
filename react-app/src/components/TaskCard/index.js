@@ -119,7 +119,7 @@ const TaskCard = (props) => {
 
       {/* NOTE Delete Button */}
       <button
-        className="SubButton"
+        className="SubButtonDel"
         onClick={() => handleDelete(props.project, props.id)}
       >
         Delete Task
