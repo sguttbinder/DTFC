@@ -67,6 +67,10 @@ nav {
   color: white;
 }
 
+input:focus, textarea:focus, select:focus{
+        outline: none;
+    }
+
 ul {
   list-style-type: none;
   padding: 20px;

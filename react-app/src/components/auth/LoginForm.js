@@ -58,6 +58,7 @@ const LoginForm = () => {
             <input
               name="email"
               type="text"
+              autoComplete="off"
               placeholder="Email"
               value={email}
               onChange={updateEmail}
@@ -66,6 +67,7 @@ const LoginForm = () => {
           <div>
             <label htmlFor="password">Password</label>
             <input
+              autoComplete="off"
               name="password"
               type="password"
               placeholder="Password"
@@ -77,7 +79,6 @@ const LoginForm = () => {
             Login
           </button>
         </form>
-        
       </div>
     </div>
   );

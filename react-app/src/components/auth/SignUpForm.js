@@ -55,6 +55,7 @@ const SignUpForm = () => {
             <label>Email</label>
             <input
               type="text"
+              autoComplete="off"
               name="email"
               onChange={updateEmail}
               value={email}
@@ -64,6 +65,7 @@ const SignUpForm = () => {
             <label>Password</label>
             <input
               type="password"
+              autoComplete="off"
               name="password"
               onChange={updatePassword}
               value={password}
@@ -72,6 +74,7 @@ const SignUpForm = () => {
           <div>
             <label>Repeat Password</label>
             <input
+              autoComplete="off"
               type="password"
               name="repeat_password"
               onChange={updateRepeatPassword}

@@ -21,8 +21,10 @@ const AddProjectForm = () => {
       <div>
         <label htmlFor="title">Project Title</label>
         <input
+          autoFocus="off"
           title="title"
           type="text"
+          autoComplete="off"
           placeholder="Project Name"
           value={title}
           onChange={addProject}

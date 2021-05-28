@@ -56,6 +56,7 @@ const TaskCardNew = (props) => {
     <div className="TaskCardNew">
       <div className="boldWhite">Add a Task:</div>
       <input
+        autoComplete="off"
         type="checkbox"
         name="completed"
         className="hideCheck"
@@ -66,6 +67,7 @@ const TaskCardNew = (props) => {
       <input
         type="text"
         placeholder="Title Your Task"
+        autoComplete="off"
         name="title"
         className="formField-Title"
         value={title}

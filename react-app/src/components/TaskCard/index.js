@@ -80,6 +80,7 @@ const TaskCard = (props) => {
         onChange={updateCompleted}
       />
       <input
+        autoComplete="off"
         type="text"
         name="title"
         value={title}
@@ -87,6 +88,7 @@ const TaskCard = (props) => {
         onChange={updateTitle}
       />
       <textarea
+        autoComplete="off"
         type="text"
         name="description"
         className="formField-Description"

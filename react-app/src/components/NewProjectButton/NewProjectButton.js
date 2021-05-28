@@ -41,6 +41,7 @@ const NewProjectButton = (props) => {
             Project Title
           </label> */}
           <input
+            autoComplete="off"
             className="sideBar-Description"
             name="title"
             type="text"
