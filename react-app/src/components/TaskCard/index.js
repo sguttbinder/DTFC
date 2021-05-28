@@ -58,11 +58,19 @@ const TaskCard = (props) => {
         checked={completed}
         onChange={updateCompleted}
       />
-      <input type="text" name="title" value={title} onChange={updateTitle} />
+      <input
+        type="text"
+        name="title"
+        value={title}
+        className="formField-Title"
+        onChange={updateTitle}
+        
+      />
       <textarea
         type="text"
         name="description"
-        value={description }
+        className="formField-Description"
+        value={description}
         onChange={updateDescription}
       ></textarea>
       <button

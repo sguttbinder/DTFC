@@ -11,11 +11,16 @@ const SplashPage = () => {
         <div>
           <i class="fas fa-code icon-size"></i>
         </div>
-          <div className="logo-font">Don't Forget The Code</div>
-        {/* <div className="list-icon">test</div> */}
+        <div className="logo-font">Don't Forget The Code</div>
+      </div>
+      <div className="subtitle">
+        A Simple Checklist App by<a href="/someurl" className="subtitle-link">
+          <i class="fab fa-github icon-link-size"></i>
+            <> </>
+          Steve Guttbinder
+        </a>
       </div>
     </div>
-    // </div>
   );
 };
 

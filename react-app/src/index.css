@@ -48,3 +48,14 @@ nav {
   border: 1px white solid;
   color: white;
 }
+
+ul {
+  list-style-type: none;
+  padding: 20px;
+}
+
+li {
+  list-style-type: none;
+  padding: 5px;
+  font-weight: 600;
+}

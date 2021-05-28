@@ -21,9 +21,9 @@ const SignUpForm = () => {
     }
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
+  // const updateUsername = (e) => {
+  //   setUsername(e.target.value);
+  // };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -50,15 +50,6 @@ const SignUpForm = () => {
             {errors.map((error) => (
               <div>{error}</div>
             ))}
-          </div>
-          <div>
-            <label>User Name</label>
-            <input
-              type="text"
-              name="username"
-              onChange={updateUsername}
-              value={username}
-            ></input>
           </div>
           <div>
             <label>Email</label>
