@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import '../TaskCard/TaskCard.css';
+import '../../index.css';
+
 // import './TaskCardNew.css';
 // useState hook to deal with local state that is 'Title'
 
@@ -51,22 +54,33 @@ const TaskCardNew = (props) => {
 
   return (
     <div className="TaskCardNew">
+      <div className="boldWhite">Add a Task:</div>
       <input
         type="checkbox"
         name="completed"
+        className="hideCheck"
         // If we have info... it gets shown. Right now, it gets undefined.
         checked={completed}
         onChange={updateCompleted}
       />
-      <input type="text" name="title" value={title} onChange={updateTitle} />
+      <input
+        type="text"
+        placeholder="Title Your Task"
+        name="title"
+        className="formField-Title"
+        value={title}
+        onChange={updateTitle}
+      />
       <textarea
         type="text"
         name="description"
+        placeholder="What's it about?"
+        className="formField-Description"
         value={description}
         onChange={updateDescription}
-      >
-      </textarea>
+      ></textarea>
       <button
+        className="NavButton  "
         onClick={() => {
           props.onSave({
             //   The three below have useStates because they are getting modified
@@ -81,7 +95,7 @@ const TaskCardNew = (props) => {
           setCompleted(false);
         }}
       >
-        Add Task{` ${props.id}`}
+        Add it!
       </button>
       {/* <button onClick={}>Delete </button> */}
     </div>

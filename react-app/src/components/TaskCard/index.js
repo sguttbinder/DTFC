@@ -95,6 +95,7 @@ const TaskCard = (props) => {
       ></textarea>
       {/* NOTE Save Button */}
       <button
+        className="SubButton"
         onClick={() => {
           props.onSave({
             //   The three below have useStates because they are getting modified
@@ -116,8 +117,8 @@ const TaskCard = (props) => {
 
       {/* NOTE Delete Button */}
       <button
-        onClick={() => handleDelete(props.project, props.id)
-        }
+        className="SubButton"
+        onClick={() => handleDelete(props.project, props.id)}
       >
         Delete Task
       </button>

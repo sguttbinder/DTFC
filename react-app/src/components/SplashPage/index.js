@@ -14,9 +14,10 @@ const SplashPage = () => {
         <div className="logo-font">Don't Forget The Code</div>
       </div>
       <div className="subtitle">
-        A Simple Checklist App by<a href="/someurl" className="subtitle-link">
+        A Simple Checklist App by
+        <a href="https://github.com/sguttbinder" className="subtitle-link">
           <i class="fab fa-github icon-link-size"></i>
-            <> </>
+          <> </>
           Steve Guttbinder
         </a>
       </div>
