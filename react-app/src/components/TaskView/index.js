@@ -136,7 +136,7 @@ const TaskView = () => {
   return (
     <div className="TaskView">
       <div className="Title">Tasks for Project</div>
-        {/* <DeleteProjectButton /> */}
+        <DeleteProjectButton />
       <ul>
         {renderNewTask()}
         {renderTasks()}
