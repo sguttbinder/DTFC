@@ -24,6 +24,8 @@ function App() {
     return null;
   }
 
+// Updates
+
   return (
     <BrowserRouter>
       <Switch>
